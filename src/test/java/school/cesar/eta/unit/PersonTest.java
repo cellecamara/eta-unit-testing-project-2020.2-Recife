@@ -1,4 +1,4 @@
-Tepackage school.cesar.eta.unit;
+package school.cesar.eta.unit;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonTest {
     Person person;
@@ -94,11 +94,23 @@ public class PersonTest {
 
     @Test
     public void isFamily_nonRelativePerson_false() {
-        fail();
+        Person nonRelative = new Person();
+        Person relative = new Person();
+
+        relative.setName("Jon");
+        person.addToFamily(relative);
+
+        assertFalse(person.isFamily(nonRelative));
+
     }
 
     @Test
     public void isFamily_relativePerson_true() {
-        fail();
+        Person nonRelative = new Person();
+        Person relative = new Person();
+
+        person.addToFamily(relative);
+
+        assertTrue(person.isFamily(relative));
     }
 }
